@@ -18,7 +18,7 @@ import torch
 from torchvision import transforms as trans
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-from utils.align_trans import *
+from util.align_trans import *
 from MTCNN import create_mtcnn_net
 from face_model import MobileFaceNet
 from facebank import load_facebank
@@ -53,11 +53,11 @@ def ensure_color(image):
         return np.dstack([image] * 3)
     return image
 
-configs = json.load(open("catkin_ws/src/new_face_recognition/scripts/configs/fer2013_config.json"))
+configs = json.load(open("catkin_ws/src/new_face_recognition/scripts/Weights/fer2013_config.json"))
 image_size=(configs["image_size"], configs["image_size"])
 model = densenet121(in_channels=3, num_classes=7)
 model.cpu()
-state = torch.load('catkin_ws/src/new_face_recognition/scripts/saved/checkpoints/densenet121_test_2022Feb11_17.38')
+state = torch.load('catkin_ws/src/new_face_recognition/scripts/Weights/densenet121_test_2022Mar15_17.44')
 model.load_state_dict(state["net"])
 model.eval()
 
@@ -102,9 +102,9 @@ def camera_callback():
     bboxes, landmarks = [], []
     try:
         bboxes, landmarks = create_mtcnn_net(input, args.mini_face, device, 
-                                            p_model_path='catkin_ws/src/new_face_recognition/scripts/MTCNN/weights/pnet_Weights',
-                                            r_model_path='catkin_ws/src/new_face_recognition/scripts/MTCNN/weights/rnet_Weights',
-                                            o_model_path='catkin_ws/src/new_face_recognition/scripts/MTCNN/weights/onet_Weights')
+                                            p_model_path='catkin_ws/src/new_face_recognition/scripts/Weights/pnet_Weights',
+                                            r_model_path='catkin_ws/src/new_face_recognition/scripts/Weights/rnet_Weights',
+                                            o_model_path='catkin_ws/src/new_face_recognition/scripts/Weights/onet_Weights')
     except:
         pass
     # FPS = 1.0 / (time.time() - start_time)

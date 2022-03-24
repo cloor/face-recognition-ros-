@@ -201,7 +201,7 @@ configs = json.load(open("catkin_ws/src/new_face_recognition/scripts/Weights/fer
 image_size=(configs["image_size"], configs["image_size"])
 model = densenet121(in_channels=3, num_classes=7)
 model.cpu()
-state = torch.load('catkin_ws/src/new_face_recognition/scripts/Weights/densenet121_test_2022Mar15_02.42')
+state = torch.load('catkin_ws/src/new_face_recognition/scripts/Weights/densenet121_test_2022Mar15_17.44')
 model.load_state_dict(state["net"])
 model.eval()
 

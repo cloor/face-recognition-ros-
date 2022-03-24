@@ -11,7 +11,7 @@ import sys
 import os
 sys.path.append(os.path.join(sys.path[0], 'MTCNN'))
 from MTCNN import create_mtcnn_net
-from utils.align_trans import *
+from util.align_trans import *
 import cv2
 import argparse
 from datetime import datetime
@@ -46,9 +46,9 @@ while cap.isOpened():
 
         try:
             bboxes, landmarks = create_mtcnn_net(p, 20, device,
-                                                 p_model_path='MTCNN/weights/pnet_Weights',
-                                                 r_model_path='MTCNN/weights/rnet_Weights',
-                                                 o_model_path='MTCNN/weights/onet_Weights')
+                                                 p_model_path='Weights/pnet_Weights',
+                                                 r_model_path='Weights/rnet_Weights',
+                                                 o_model_path='Weights/onet_Weights')
 
             warped_face = Face_alignment(p, default_square=True, landmarks=landmarks)
             cv2.imwrite(str(save_path/'{}.jpg'.format(str(datetime.now())[:-7].replace(":","-").replace(" ","-"))), warped_face[0])

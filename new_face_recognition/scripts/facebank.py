@@ -48,9 +48,9 @@ def prepare_facebank(model, path = 'facebank', tta = True):
 
                 if img.shape != (112, 112, 3):
                     bboxes, landmarks = create_mtcnn_net(img, 20, device,
-                                                     p_model_path='MTCNN/weights/pnet_Weights',
-                                                     r_model_path='MTCNN/weights/rnet_Weights',
-                                                     o_model_path='MTCNN/weights/onet_Weights')
+                                                     p_model_path='Weights/pnet_Weights',
+                                                     r_model_path='Weights/rnet_Weights',
+                                                     o_model_path='Weights/onet_Weights')
 
                     img = Face_alignment(img, default_square=True, landmarks=landmarks)
 

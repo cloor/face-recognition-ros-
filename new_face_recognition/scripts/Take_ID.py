@@ -11,7 +11,7 @@ import sys
 import os
 sys.path.append(os.path.join(sys.path[0], 'MTCNN'))
 from MTCNN import create_mtcnn_net
-from utils.align_trans import *
+from util.align_trans import *
 import cv2
 import argparse
 from datetime import datetime
@@ -27,9 +27,9 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 image = cv2.imread(args.image)
 bboxes, landmarks = create_mtcnn_net(image, 20, device,
-                                     p_model_path='MTCNN/weights/pnet_Weights',
-                                     r_model_path='MTCNN/weights/rnet_Weights',
-                                     o_model_path='MTCNN/weights/onet_Weights')
+                                     p_model_path='Weights/pnet_Weights',
+                                     r_model_path='Weights/rnet_Weights',
+                                     o_model_path='Weights/onet_Weights')
 
 warped_face = Face_alignment(image, default_square=True, landmarks=landmarks)
 

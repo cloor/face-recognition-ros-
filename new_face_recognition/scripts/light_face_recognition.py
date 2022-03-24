@@ -14,7 +14,7 @@ import torch
 from torchvision import transforms as trans
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-from utils.align_trans import *
+from util.align_trans import *
 from MTCNN import create_mtcnn_net
 from face_model import MobileFaceNet
 from facebank import load_facebank
@@ -66,9 +66,9 @@ def camera_callback():
     bboxes, landmarks = [], []
     try:
         bboxes, landmarks = create_mtcnn_net(input, args.mini_face, device, 
-                                            p_model_path='catkin_ws/src/new_face_recognition/scripts/MTCNN/weights/pnet_Weights',
-                                            r_model_path='catkin_ws/src/new_face_recognition/scripts/MTCNN/weights/rnet_Weights',
-                                            o_model_path='catkin_ws/src/new_face_recognition/scripts/MTCNN/weights/onet_Weights')
+                                            p_model_path='catkin_ws/src/new_face_recognition/scripts/Weights/pnet_Weights',
+                                            r_model_path='catkin_ws/src/new_face_recognition/scripts/Weights/rnet_Weights',
+                                            o_model_path='catkin_ws/src/new_face_recognition/scripts/Weights/onet_Weights')
     except:
         pass
 
